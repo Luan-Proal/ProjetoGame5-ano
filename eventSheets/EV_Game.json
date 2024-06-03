@@ -1,0 +1,483 @@
+{
+	"name": "EV_Game",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-in-touch",
+					"objectClass": "Toque",
+					"sid": 452387285911245
+				},
+				{
+					"id": "compare-y",
+					"objectClass": "Bird",
+					"sid": 377013477227254,
+					"parameters": {
+						"comparison": 5,
+						"y-co-ordinate": "5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "Bird",
+					"sid": 512791926678856,
+					"parameters": {
+						"y": "Bird.Y - 600* dt"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Bird",
+					"sid": 890075279660525,
+					"parameters": {
+						"angle": "0"
+					}
+				}
+			],
+			"sid": 812215273311145
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-in-touch",
+					"objectClass": "Toque",
+					"sid": 594321135370234,
+					"isInverted": true
+				},
+				{
+					"id": "compare-y",
+					"objectClass": "Bird",
+					"sid": 984840380577601,
+					"parameters": {
+						"comparison": 3,
+						"y-co-ordinate": "1275"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "Bird",
+					"sid": 730643244938424,
+					"parameters": {
+						"y": "Bird.Y + 600 * dt"
+					}
+				}
+			],
+			"sid": 462049178167219,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 491495582398386,
+							"parameters": {
+								"first-value": "Bird.Angle",
+								"comparison": 3,
+								"second-value": "35"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "Bird",
+							"sid": 529110262523897,
+							"parameters": {
+								"angle": "Bird.Angle + 100 * dt"
+							}
+						}
+					],
+					"sid": 594161578943766
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-x",
+					"objectClass": "BackGround",
+					"sid": 607629498965035,
+					"parameters": {
+						"comparison": 3,
+						"x-co-ordinate": "-(BackGround.Width)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "BackGround",
+					"sid": 114725335175475,
+					"parameters": {
+						"x": "BackGround.Width - 10"
+					}
+				}
+			],
+			"sid": 875159247101764
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "BackGround",
+					"sid": 758389426954042,
+					"parameters": {
+						"x": "BackGround.X - 200 * dt"
+					}
+				}
+			],
+			"sid": 818866175427294
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 137057280830185,
+					"parameters": {
+						"interval-seconds": "2.0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 982790765899360,
+					"parameters": {
+						"object-to-create": "ObstáculoBaixo",
+						"layer": "0",
+						"x": "949",
+						"y": "random(377,1105)",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 246010030089115,
+					"parameters": {
+						"object-to-create": "ObstáculoCima",
+						"layer": "0",
+						"x": "949",
+						"y": "ObstáculoBaixo.Y - 250",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				}
+			],
+			"sid": 238658278168729
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 618525948894256
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "ObstáculoBaixo",
+					"sid": 742969788964384,
+					"parameters": {
+						"x": "ObstáculoBaixo.X - 300 * dt"
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "ObstáculoCima",
+					"sid": 933877744676769,
+					"parameters": {
+						"x": "ObstáculoCima.X - 300 * dt"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Pontos",
+					"sid": 207403695497949,
+					"parameters": {
+						"text": "pontos"
+					}
+				}
+			],
+			"sid": 993648181138532
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bird",
+					"sid": 505289502543401,
+					"parameters": {
+						"object": "ObstáculoBaixo"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 391812955386275,
+					"parameters": {
+						"layout": "Game Over"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 306544926787687,
+					"parameters": {
+						"audio-file": "sfx_hit",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 945855942238521,
+					"parameters": {
+						"variable": "pontos",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 745895012592437
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Bird",
+					"sid": 888569334146185,
+					"parameters": {
+						"object": "ObstáculoCima"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 247222931826912,
+					"parameters": {
+						"layout": "Game Over"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 564290775549981,
+					"parameters": {
+						"audio-file": "sfx_hit",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 798649971044062,
+					"parameters": {
+						"variable": "pontos",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 244226010999722
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-y",
+					"objectClass": "Bird",
+					"sid": 647356059250428,
+					"parameters": {
+						"comparison": 4,
+						"y-co-ordinate": "1260"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 170535783963486,
+					"parameters": {
+						"layout": "Game Over"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 449370792480660,
+					"parameters": {
+						"audio-file": "sfx_die",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 320395468269083,
+					"parameters": {
+						"variable": "pontos",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 468247139603765
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-screen",
+					"objectClass": "ObstáculoBaixo",
+					"sid": 406202921799346
+				},
+				{
+					"id": "compare-x",
+					"objectClass": "Bird",
+					"sid": 952562069732480,
+					"parameters": {
+						"comparison": 4,
+						"x-co-ordinate": "ObstáculoBaixo.X"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 659156562300857
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 425288738811462,
+					"parameters": {
+						"variable": "pontos",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 239255417843370
+		},
+		{
+			"eventType": "variable",
+			"name": "pontos",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 892878981752938
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 935080171613078
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "Chão1",
+					"sid": 149937160573014,
+					"parameters": {
+						"x": "Chão1.X-5"
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "Chão2",
+					"sid": 347397640286828,
+					"parameters": {
+						"x": "Chão2.X - 5"
+					}
+				}
+			],
+			"sid": 897616454717441
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-x",
+					"objectClass": "Chão1",
+					"sid": 958024392521118,
+					"parameters": {
+						"comparison": 3,
+						"x-co-ordinate": "-5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "Chão1",
+					"sid": 735985833890605,
+					"parameters": {
+						"x": "0"
+					}
+				}
+			],
+			"sid": 365389615955403
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-x",
+					"objectClass": "Chão2",
+					"sid": 531001808194735,
+					"parameters": {
+						"comparison": 3,
+						"x-co-ordinate": "-5"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "Chão2",
+					"sid": 244711442456203,
+					"parameters": {
+						"x": "0"
+					}
+				}
+			],
+			"sid": 570837888853227
+		}
+	],
+	"sid": 769016922238520
+}

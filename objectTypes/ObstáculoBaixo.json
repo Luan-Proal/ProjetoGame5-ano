@@ -1,0 +1,58 @@
+{
+	"name": "ObstáculoBaixo",
+	"plugin-id": "Sprite",
+	"sid": 254265817092453,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 70,
+						"height": 604,
+						"originX": 0,
+						"originY": 0,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6605653,
+						"collisionPoly": {
+							"points": [
+								0.14285714285714285,
+								0,
+								0.9,
+								0,
+								1,
+								0.023178807947019868,
+								1,
+								0.08112582781456953,
+								0.8714285714285714,
+								1,
+								0.11428571428571428,
+								1,
+								0,
+								0.08443708609271523,
+								0,
+								0.026490066225165563
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 770592964501084,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

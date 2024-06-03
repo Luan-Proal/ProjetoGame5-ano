@@ -1,0 +1,38 @@
+{
+	"name": "Game Over",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 591152011506578,
+					"parameters": {
+						"interval-seconds": "10.0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 219630223208561,
+					"parameters": {
+						"layout": "Início"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Pontos",
+					"sid": 521192489171264,
+					"parameters": {
+						"text": "Pontos"
+					}
+				}
+			],
+			"sid": 103616354517274
+		}
+	],
+	"sid": 961353826000912
+}

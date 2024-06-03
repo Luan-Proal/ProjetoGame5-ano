@@ -1,0 +1,27 @@
+{
+	"name": "Início",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Jogar",
+					"sid": 760660849224998
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 437189146616306,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 367604571543435
+		}
+	],
+	"sid": 288428069762734
+}
